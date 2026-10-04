@@ -1,42 +1,23 @@
-# LinkedBlox Map Blockout
+# Priyadarsini & Sathiskumar — wedding invitation
 
-This workspace now includes a Roblox Studio map generator: [GuildHubTerrainBuilder.server.lua](./GuildHubTerrainBuilder.server.lua)
-It also includes a movement script: [GuildHubMovement.client.lua](./GuildHubMovement.client.lua)
+A self-contained, mobile-first wedding invitation. Open index.html in a browser or publish this folder as a static website. It has no build step or third-party JavaScript dependencies.
 
-## How to use it
+## Personalize the invitation
 
-1. Open your place in Roblox Studio.
-2. Insert `GuildHubTerrainBuilder.server.lua` into `ServerScriptService`.
-3. Insert `GuildHubMovement.client.lua` into `StarterPlayer` > `StarterPlayerScripts`.
-4. Run the place once in Studio.
-5. The terrain script generates the hub at `Workspace.GeneratedGuildHub`.
-6. When you are happy with the blockout, keep editing it in Studio and remove or disable the terrain script so it does not regenerate every run.
+Edit wedding-details.js to update names, event date, event time, venue, map links, or the music file. When the date changes, update dateISO, startISO, and endISO together. The written invitation and photo captions live in index.html; edit that file to change any on-page copy. Replace a JPEG in assets/ to change its photograph while keeping the same filename.
 
-## What it builds
+To add music, copy a licensed MP3 to assets/wedding-music.mp3 and set musicEnabled to true in wedding-details.js. Browsers require a visitor tap before they will play sound.
 
-- Spawn plaza with a domed castle-like structure
-- Central guild hall
-- Builder, animator, artist, and musician guild districts
-- Marketplace
-- VFX / UI prototype zone
-- Future expansion pads
-- Central fountain
-- Forest ring, rock edges, lake, river, and waterfall
-- Path network matching the concept layout
-- Extra houses, props, lamps, benches, and district support buildings
-- Sprint and custom shift-lock controls
+## Sharing preview
 
-## Controls
+For a rich WhatsApp preview, publish the folder to a public HTTPS URL and set absolute URLs in og:image, twitter:image, and og:url in index.html. Use the public URL for the image, for example https://your-domain.example/assets/main-couple.jpg; social preview bots need a publicly reachable image. Update the page title and description in the same file if you personalize the invitation.
 
-- `LeftShift`: hold to sprint
-- `LeftAlt`: toggle shift lock
+## Included interactions
 
-## Notes
-
-- This is a stylized blockout, not a final art pass.
-- It is designed for an empty or mostly empty place centered around `(0, 0, 0)`.
-- Re-running the script clears and rebuilds the area around the hub.
-
-## Wedding invitation
-
-A separate static invitation website with the supplied photos and editable event details is in the [wedding-invitation](./wedding-invitation/) folder. See its README for personalization and publishing notes.
+- Animated invitation cover
+- Scratch-to-reveal date with a tap-accessible alternative and falling petals
+- Live countdown to the ceremony
+- Tap-to-expand photo gallery
+- Venue map and directions
+- Share sheet, music control, and calendar download
+- Reduced-motion and small-screen support
