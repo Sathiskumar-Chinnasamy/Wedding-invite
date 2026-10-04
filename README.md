@@ -6,7 +6,7 @@ A self-contained, mobile-first wedding invitation. Open index.html in a browser 
 
 Edit wedding-details.js to update names, event date, event time, venue, map links, or the music file. When the date changes, update dateISO, startISO, and endISO together. The written invitation and photo captions live in index.html; edit that file to change any on-page copy. Replace a JPEG in assets/ to change its photograph while keeping the same filename.
 
-To add music, copy a licensed MP3 to assets/wedding-music.mp3 and set musicEnabled to true in wedding-details.js. Browsers require a visitor tap before they will play sound.
+The supplied soundtrack in assets/wedding-music.mp3 starts when a guest taps Open invitation; the music note in the header pauses or resumes it. Browsers on phones require that tap before they will play sound. To replace the track, use the same filename and keep musicEnabled set to true in wedding-details.js.
 
 ## Sharing preview
 

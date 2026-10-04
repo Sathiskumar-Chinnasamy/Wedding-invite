@@ -54,6 +54,7 @@
     var invitationContent = document.getElementById("invitation-content");
     invitationContent.removeAttribute("inert");
     invitationContent.setAttribute("aria-hidden", "false");
+    startWeddingMusic();
     window.setTimeout(function () {
       cover.hidden = true;
       cover.setAttribute("aria-hidden", "true");
@@ -201,25 +202,28 @@
   var audio = document.getElementById("wedding-audio");
   var musicButton = document.getElementById("music-toggle");
   audio.src = details.musicFile;
-  musicButton.addEventListener("click", function () {
+  function setMusicState(isPlaying) {
+    musicButton.classList.toggle("is-playing", isPlaying);
+    musicButton.setAttribute("aria-pressed", String(isPlaying));
+    musicButton.setAttribute("aria-label", isPlaying ? "Pause wedding music" : "Play wedding music");
+  }
+  function startWeddingMusic() {
     if (!details.musicEnabled || !details.musicFile) {
       showToast("Wedding music was not attached. Add a song at " + details.musicFile + " and enable it in wedding-details.js.");
       return;
     }
-    if (audio.paused) {
-      audio.play().then(function () {
-        musicButton.classList.add("is-playing");
-        musicButton.setAttribute("aria-pressed", "true");
-        musicButton.setAttribute("aria-label", "Pause wedding music");
-      }).catch(function () { showToast("The music file could not be played. Check its path in wedding-details.js."); });
-    } else {
-      audio.pause();
-      musicButton.classList.remove("is-playing");
-      musicButton.setAttribute("aria-pressed", "false");
-      musicButton.setAttribute("aria-label", "Play wedding music");
-    }
+    audio.play().then(function () {
+      setMusicState(true);
+    }).catch(function () {
+      setMusicState(false);
+      showToast("Tap the music note to start the wedding music.");
+    });
+  }
+  musicButton.addEventListener("click", function () {
+    if (audio.paused) startWeddingMusic();
+    else audio.pause();
   });
-  audio.addEventListener("pause", function () { musicButton.classList.remove("is-playing"); musicButton.setAttribute("aria-pressed", "false"); });
+  audio.addEventListener("pause", function () { setMusicState(false); });
 
   var lightbox = document.getElementById("lightbox");
   var lightboxImage = document.getElementById("lightbox-image");
