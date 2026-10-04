@@ -31,9 +31,13 @@ button { color: inherit; }
 .curtain-right { left: auto; right: 0; border-left: 1px solid rgba(221,186,124,.3); box-shadow: inset 14px 0 34px rgba(12,5,8,.15); }
 .curtain-right::after { left: 18px; }
 .cover-card { position: relative; z-index: 1; display: flex; width: min(88vw, 430px); min-height: min(76svh, 650px); padding: clamp(38px, 7vh, 62px) 24px; flex-direction: column; align-items: center; justify-content: center; text-align: center; border: 1px solid rgba(237,207,150,.72); outline: 1px solid rgba(237,207,150,.37); outline-offset: 7px; background: linear-gradient(160deg, rgba(49,18,33,.78), rgba(35,13,25,.87)); box-shadow: 0 24px 90px #18091080; transition: opacity .45s ease, transform .75s cubic-bezier(.2,.7,.2,1); }
-.cover-card::before, .cover-card::after { position: absolute; left: 50%; width: 56px; height: 56px; border: 1px solid rgba(229,206,157,.58); border-radius: 50%; transform: translateX(-50%); content: ""; }
-.cover-card::before { top: -29px; background: #321522; }
-.cover-card::after { bottom: -29px; background: #321522; }
+.cover-card::before, .cover-card::after { position: absolute; z-index: 0; left: 50%; width: 66px; height: 66px; border: 1px solid rgba(229,206,157,.58); border-radius: 50%; content: ""; transform: translateX(-50%); }
+.cover-card::before { top: -34px; background: #321522; }
+.cover-card::after { bottom: -34px; background: #321522; }
+.cover-seal { position: absolute; z-index: 2; left: 50%; display: flex; width: 66px; height: 66px; align-items: center; justify-content: center; gap: 3px; color: var(--gold-pale); font: italic 19px/1 var(--serif); white-space: nowrap; transform: translateX(-50%); }
+.cover-seal span { color: var(--gold); font-size: 14px; }
+.cover-seal-top { top: -34px; }
+.cover-seal-bottom { bottom: -34px; }
 .cover-rule { position: absolute; top: 18px; left: 50%; width: 45px; height: 1px; background: var(--gold); transform: translateX(-50%); }
 .cover-rule-bottom { top: auto; bottom: 18px; }
 .cover-flower { position: relative; z-index: 2; margin-bottom: 20px; color: var(--gold); font-size: 26px; animation: flower-turn 14s linear infinite; }
