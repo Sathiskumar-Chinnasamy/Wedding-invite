@@ -52,8 +52,17 @@
     event.stopPropagation();
     if (openingButton.disabled || cover.hidden) return;
     openingButton.disabled = true;
+    try {
+      if (window.location.hash) {
+        window.history.replaceState(window.history.state, "", window.location.pathname + window.location.search);
+      }
+    } catch (error) {}
     cover.classList.add("is-opening");
     document.body.classList.remove("invite-closed");
+    var scrollBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    document.documentElement.style.scrollBehavior = scrollBehavior;
     var invitationContent = document.getElementById("invitation-content");
     invitationContent.removeAttribute("inert");
     invitationContent.setAttribute("aria-hidden", "false");
@@ -61,6 +70,9 @@
     window.setTimeout(function () {
       cover.hidden = true;
       cover.setAttribute("aria-hidden", "true");
+      document.documentElement.style.scrollBehavior = "auto";
+      window.scrollTo(0, 0);
+      document.documentElement.style.scrollBehavior = scrollBehavior;
       document.getElementById("home").focus({ preventScroll: true });
     }, reducedMotion ? 20 : 1300);
   });
