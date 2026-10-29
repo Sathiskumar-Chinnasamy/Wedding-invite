@@ -47,7 +47,10 @@
     toastTimer = window.setTimeout(function () { toast.classList.remove("is-visible"); }, 3600);
   }
 
-  openingButton.addEventListener("click", function () {
+  openingButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (openingButton.disabled || cover.hidden) return;
     openingButton.disabled = true;
     cover.classList.add("is-opening");
     document.body.classList.remove("invite-closed");
