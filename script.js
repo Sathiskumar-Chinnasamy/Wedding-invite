@@ -137,12 +137,10 @@
     ctx.fillText("✿", rect.width / 2, rect.height / 2 - 37);
     ctx.font = "italic 23px Georgia, serif";
     ctx.fillText("A date to remember", rect.width / 2, rect.height / 2 - 3);
-    ctx.font = "10px Segoe UI, sans-serif";
-    ctx.fillStyle = "rgba(255,248,230,.86)";
-    ctx.fillText("SCRATCH TO REVEAL", rect.width / 2, rect.height / 2 + 34);
   }
   function scratchAt(event) {
     var rect = canvas.getBoundingClientRect();
+    scratchCard.classList.add("is-scratching");
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
     ctx.arc(event.clientX - rect.left, event.clientY - rect.top, 23, 0, Math.PI * 2);
@@ -181,6 +179,7 @@
   function revealDate() {
     if (scratchCleared) return;
     scratchCleared = true;
+    scratchCard.classList.add("is-revealed");
     canvas.classList.add("is-cleared");
     document.getElementById("scratch-hint").textContent = "14 November 2026 · See you there ✦";
     burstPetals();
